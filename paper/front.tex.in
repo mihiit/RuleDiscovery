@@ -1,0 +1,124 @@
+\section{Introduction}
+An agent dropped into an unfamiliar environment is rarely told how it works. What it gets is feedback on its own actions: a key turns in a lock or it does not, a lever press advances a sequence or resets it. Chollet argues that intelligence is better measured by how efficiently skills are acquired than by performance on a fixed task distribution~\cite{chollet2019}; discovering a hidden rule from interaction is a small instance of that idea. Three families of method are usually offered for it: keeping explicit candidate rules and testing them~\cite{klahr1988,gopnik1997,tenenbaum2011}, Bayesian posterior sampling~\cite{strens2000,osband2013}, and training a recurrent policy whose hidden state is expected to absorb the bookkeeping~\cite{duan2016,wang2016}.
+
+This paper compares the three in small environments that can be inspected completely. The question is not whether explicit hypothesis testing works, which is unsurprising when the hypothesis space is handed to the agent, but \emph{how much of any advantage survives once the comparison is made fair, and what it costs}. We ask five questions.
+\textbf{Q1:} when a learned agent is given the same belief information as the hypothesis tracker, how much of the hypothesis agent's advantage remains? This matched-information control is the central experiment.
+\textbf{Q2:} where does an explicit hypothesis-testing agent outperform reactive, Bayesian and learned agents, and by how much?
+\textbf{Q3:} which components (reward form, information bonus, memory, revision) are responsible?
+\textbf{Q4:} what happens when the agent's structural assumption is false, and can the assumption be made adaptive?
+\textbf{Q5:} do the findings carry over to a structurally different task and to noisy feedback, and does a closed-form cost prediction hold?
+
+The comparison is deliberately asymmetric in what agents know: the hypothesis agent is given hand-built templates for exactly the rule families the generators use, while learned agents must infer them from experience. The gap between them is therefore conditional on that supplied structure, and the matched-information control of Q1 is the central experiment. Table~\ref{tab:info} states what each agent is given. We do not claim to reproduce ARC-AGI-3 or any external benchmark, no language models are used, and nothing here bears on general intelligence.
+
+\textbf{Contributions.}
+(1)~A matched-information control: a learned agent that receives the hypothesis tracker's own beliefs, so that what is \emph{supplied} by the tracker can be told apart from what the policy \emph{learns}. It is the central result of the paper.
+(2)~A procedural grid-world benchmark whose hidden rules are bindings (key--door, switch--bridge, push-block), with six generalization regimes that separate recombination, chain length, grid size and unseen color symbols, and a second family, a combination vault.
+(3)~A controlled comparison of hypothesis-testing, posterior-sampling and learned agents over one macro-action vocabulary, with an explicit table of what each agent is given. Statistics treat the independently trained model, not the evaluation episode, as the unit: @{NMODELS} models for the main learned agents and the belief control, fewer elsewhere (stated per result).
+(4)~A factorial ablation separating reward form from the information bonus.
+(5)~A quantification of the failure caused by a hard exclusivity assumption, a soft prior that corrects itself when a violation is visible in the feedback, and a test under noisy feedback (jammed locks).
+(6)~An elementary closed-form prediction of the failed-test cost of elimination, used as an analytical check on the benchmark and on agent behavior in both families.
+
+\section{Related Work}
+\textbf{Benchmarks.} Procgen, BabyAI and Minigrid~\cite{cobbe2020,chevalier2019,chevalier2023} expose train--test gaps in procedurally generated worlds, surveyed in~\cite{kirk2023}. We borrow the procedural idea but make the \emph{rule binding}, not the layout, the thing to be discovered. Compositional generalization has mostly been studied in language~\cite{lake2018,keysers2020}.
+
+\textbf{Exploration and experimental design.} Choosing actions for the information they carry goes back to Bayesian experimental design~\cite{lindley1956,chaloner1995} and is used in reinforcement learning through count-based, curiosity and variational bonuses~\cite{bellemare2016,pathak2017,houthooft2016}, and through information-directed sampling~\cite{russo2014}. Our utility is the same idea computed exactly over a small symbolic hypothesis space. Eliminating inconsistent hypotheses is version-space reasoning~\cite{mitchell1982} and the query-learning view of concept acquisition~\cite{angluin1988}.
+
+\textbf{Bayesian and learned adaptation.} Posterior (Thompson) sampling~\cite{thompson1933,strens2000,osband2013} and Bayes-adaptive RL~\cite{ghavamzadeh2015} supply our Bayesian baseline, in a setting that is a partially observable decision problem~\cite{kaelbling1998} whose unobserved part is the rule table. Recurrent and latent-variable meta-RL~\cite{duan2016,wang2016,finn2017,zintgraf2020,rakelly2019,gupta2018} are the closest learned counterparts; temporal abstraction~\cite{sutton1999} motivates the macro-actions. We follow recommendations on seeds and uncertainty in RL evaluation~\cite{henderson2018,colas2018,agarwal2021}.
+
+\textbf{Recent work (2021--2026).} Interactive discovery benchmarks now target language-model agents: DiscoveryWorld~\cite{jansen2024} offers 24 simulated scientific tasks on which strong baseline agents struggle, BoxingGym~\cite{gandhi2025} scores experimental design by expected information gain and reports that an explicit statistical model did not reliably help its LLM agents, and ARC-AGI-2~\cite{chollet2025arc2} tests few-shot abstraction on static grids. Theory-based RL learns program-like game models by Bayesian inference~\cite{tsividis2021}; Hypothesis Search lets an LLM propose and test explicit hypotheses~\cite{wang2024hs}; and LLM exploration improves when the history is externally summarized as sufficient statistics~\cite{krishnamurthy2024}, which parallels our belief inputs. Large meta-RL agents adapt quickly over vast task distributions~\cite{ada2023}, and recurrent model-free RL is a strong baseline for partially observable problems when implemented with care~\cite{ni2022}. Statistical guidance for RL~\cite{agarwal2021,patterson2024} motivates our training-run-level analysis. None of these, to our knowledge, varies only the belief information given to a learned non-language agent over a fixed action vocabulary.
+
+\textbf{Closest related benchmark.} CausalGame~\cite{chen2026causalgame} casts scientific discovery as an interactive game in which an LLM agent designs drones under hidden confounders, selection bias and measurement noise, and is judged on design quality and a written report. It targets language-model agents and causal mechanisms in a continuous design space, whereas our benchmark has discrete rule bindings and compares non-language agents over a shared action vocabulary; the two are complementary. We run a non-language adaptation of its survival part in Sect.~\ref{sec:cg}; its report rubric is not evaluated.
+
+\textbf{What existing comparisons leave confounded.} Comparisons of meta-RL with explicit or Bayesian methods usually differ in several respects at once: the action space (primitives or structured skills), what is kept about past outcomes (a recurrent state or an explicit record), whether the hypothesis space is supplied, and whether uncertainty is estimated over independently trained runs or only over episodes of one network. A gap between methods can then come from any of these. Here the action vocabulary is held fixed, belief information is varied through a matched control, uncertainty is estimated over trained models, and the held-out splits separate memorizing symbols from testing relations. We have not found a study that combines these controls on a rule-discovery task, but we cannot rule out that one exists.
+
+\textbf{What is and is not new.} Hypothesis testing, information-gain exploration, posterior sampling and elimination are established, and we claim none of them. The contribution is empirical: the controlled comparison, the matched-information result and the adaptive-exclusivity experiment. The proposition in Sect.~\ref{sec:prop} is an elementary counting argument used as analytical validation, a parameter-free prediction against which agent behavior is checked, and not as a theoretical advance.
+
+\section{Benchmarks}
+\textbf{Grid family.} Grids are $8$--$14$ cells wide and contain walls, keys, doors, switches, chasms, movable blocks, traps and a target. The actions are UP, DOWN, LEFT, RIGHT, INTERACT, PUSH and WAIT, the grid is fully observable, and the rules are never part of the observation. Gates are composed procedurally from four rule types: \emph{key--door} (one key is carried at a time and key color $k$ opens the door of color $\phi(k)$), \emph{switch--bridge}, \emph{push-block} (two pushes move the block) and, for the rule-type experiment only, \emph{switch--door}. The bindings are redrawn for every environment. Each gate's key or switch is placed in an earlier zone, and a solver confirms that every instance can be solved. Difficulty 1--5 adds gates, distractor keys and switches, and traps (Table~\ref{tab:diff}); an episode lasts at most 200 steps. Train and test environments use disjoint seed ranges. Table~\ref{tab:regimes} lists the generalization regimes. In regime D the test environments use four colors never seen in training, with the relation (key color equals door color) preserved, so a policy that memorized symbols fails while one that tests the relation does not.
+
+\textbf{Combination vault.} A hidden injective sequence of $k$ levers out of $L$ must be pressed in order. A correct press advances progress, a wrong press resets it to zero, and the feedback is one of advance, reset or open. There is no navigation, the hypothesis space is a set of sequences rather than of pairings, and success depends on remembering which lever failed at which position. Learned agents train on $L\in\{4,5\}$, $k\in\{2,3\}$ and are tested on those sizes and on $L\in\{6,7\}$, $k\in\{4,5\}$, with 150 steps per episode.
+
+\begin{table}[!htbp]
+\caption{Generalization regimes. KD key--door, SB switch--bridge, PB push-block. Train and test seeds are disjoint.}\label{tab:regimes}
+\centering\small
+\begin{tabular}{lll}
+\toprule
+Regime & Train & Test \\
+\midrule
+A recombination & KD; SB; PB (single rules) & KD+SB; KD+PB; SB+PB \\
+B composition & KD+SB; KD+PB; SB+PB & KD+SB+PB \\
+C chain length & KD+SB, $10{\times}10$ & KD+SB+KD+SB, $12{\times}12$ \\
+C2 size only & KD+SB+PB, $10{\times}10$ & KD+SB+PB, $14{\times}14$ \\
+D unseen colors & KD+KD+SB+KD, 4 colors & same rules, 4 disjoint colors \\
+E novel combination & KD; SB+PB & KD+SB+PB \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Difficulty levels of the grid family.}\label{tab:diff}
+\centering\small
+\begin{tabular}{clccc}
+\toprule
+Level & Gates & Grid & Distractor key/switch pairs & Traps \\
+\midrule
+1 & KD & $8{\times}8$ & 0 & 0 \\
+2 & KD+SB & $10{\times}10$ & 0 & 1 \\
+3 & KD+SB+PB & $10{\times}10$ & 1 & 2 \\
+4 & KD+SB+PB+KD & $12{\times}12$ & 2 & 3 \\
+5 & KD+SB+PB+KD+SB & $14{\times}14$ & 3 & 4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Agents}\label{sec:agents}
+All non-random agents avoid traps and know what the actions do. What they have to find out are the bindings, and in one experiment the rule type. Table~\ref{tab:info} lists what each agent is given, which is the main thing to keep in mind when reading the results.
+
+\textbf{Reactive.} Breadth-first-search heuristics on the current observation plus a single lose-shift bit. It keeps no record of what it tried.
+
+\textbf{Hypothesis-driven.} The agent holds a confidence for each candidate binding (key color, door color), (switch color, chasm color) and for ``blocks are pushable''. A correct prediction adds $\alpha=0.6$ and marks the hypothesis confirmed; a wrong one subtracts $\beta=0.6$ and rejects it after two contradictions. Probabilities are normalized over the non-rejected candidates for a target, and a key already confirmed for one door is excluded from the others (the \emph{exclusivity} assumption). The state is recomputed from episodic memory at every decision, so memory capacity controls what is remembered. Decisions are made over macro-actions (go to the target, pick up or swap a key, test the held key on a door, toggle a switch, push a block) scored by
+\begin{equation}
+U(a)=R(a)+\lambda\,\mathrm{IG}(a)-\mu\,c(a),\label{eq:u}
+\end{equation}
+with expected reward $R=V\,p$, information term $\mathrm{IG}=\sum H_b(p)$ and cost $c$ equal to path length
+where $p$ is the probability that the tested hypothesis is true, $H_b$ is the binary entropy, $V=3$ per gate and $10$ for the target, $\lambda=0.5$ and $\mu=0.05$. When a test settles the hypothesis directly, $H_b(p)$ is the expected information gain of that test. The constants were set by hand, not tuned per condition.
+
+\textbf{Hypothesis-adaptive (new).} The hard exclusivity rule is replaced by a prior. A key (or switch) that is already confirmed for one target keeps weight $\rho=0.05$ for other targets instead of weight $0$, so it is tried last but not never. As soon as one key is confirmed for two different targets the prior is discarded for the rest of the episode. Exclusivity is therefore the default belief but can be overturned by evidence. The method adapts to \emph{detectable} violations only; it does not address misspecification that never shows up in the feedback.
+
+\textbf{PSRL.}~\cite{strens2000,osband2013} Same evidence and same macro-actions, but no confidences and no information bonus: the agent samples one complete binding consistent with every outcome so far, keeps it while it stays consistent, resamples when it offers no progress, and acts as if it were true. In the vault, the hypothesis agent is the explicit set of all codes consistent with the feedback; it presses the lever most likely at the current position.
+
+\textbf{Learned agents.} All learned agents use PPO~\cite{schulman2017} implemented in JAX~\cite{jax2018}, feedforward (FF) or with a GRU~\cite{cho2014}. \emph{Macro} agents choose among exactly the macro-actions above; their features are the macro type, the colors involved, the path cost, the last macro and its outcome, and nothing about beliefs. \emph{Macro-GRU+belief} is the matched-information control: the same agent with two more features per candidate, the expected value $R$ and the information gain IG that the hypothesis tracker computes, which also carries the templates and the exclusivity rule. \emph{Generic} agents choose among generic skills only (go to a key, switch, door, block or target; INTERACT; PUSH), so the test-the-key structure has to be learned. \emph{Primitive} PPO acts on a CNN encoding of the grid with potential-based shaping~\cite{ng1999}. Macro agents are trained for 12k episodes on the mixed-difficulty distribution and 5k on each regime's training distribution, and a separate model is trained per regime and per seed. Vault agents are trained for 30k episodes on the small codes only.
+
+\begin{table}[!htbp]
+\caption{Information each agent is given. ``Templates'' are the hand-built hypothesis forms (key--door, switch--bridge, push). Learned agents obtain what they know about the rules only through training; $n$ is the number of independently trained models.}\label{tab:info}
+\centering\footnotesize
+\begin{tabular}{p{2.55cm}p{1.45cm}p{2.2cm}p{1.6cm}p{2.7cm}}
+\toprule
+Agent & Actions & Evidence kept & Templates & Exclusivity \\
+\midrule
+Reactive & primitives & lose-shift bit & no & none \\
+PSRL & macros & full outcome log & yes & hard \\
+Hypothesis & macros & full log, confidences & yes & hard \\
+Hypothesis-adaptive & macros & full log, confidences & yes & soft prior, dropped on violation \\
+Macro-FF / GRU & macros & last outcome (+GRU state) & implicit & learned implicitly; $n=@{NMODELS}$ \\
+Macro-GRU+belief & macros & tracker beliefs as features & via tracker & via tracker; $n=@{NM('macro_gruB')}$ \\
+Generic-FF / GRU & generic skills & last outcome (+GRU state) & implicit & learned implicitly; $n=@{NGENERIC}$ \\
+Primitive PPO & primitives & GRU state only & implicit & learned implicitly; $n=1$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Protocol and Statistics}\label{sec:prop}
+\textbf{Belief view and decomposition.} Let $\theta$ be the hidden rule table, $h_t$ the history and $b_t=P(\theta\mid h_t)$ the belief. The task is a partially observable decision problem whose only unobserved part is $\theta$~\cite{kaelbling1998}, so an optimal policy exists that depends on the history only through $(o_t,b_t)$. A learned policy without $b_t$ must carry an equivalent summary in its recurrent state. Our tracker supplies an approximate $\hat b_t$, so this motivates the design but guarantees nothing. With $S_H$, $S_L$, $S_{L+b}$ the success of the tracker agent, a learned agent, and the learned agent given $\hat b_t$, the advantage decomposes exactly: $S_H-S_L=(S_{L+b}-S_L)+(S_H-S_{L+b})$, an \emph{information gap} plus a \emph{learning gap}; the matched control estimates the first term.
+
+
+Every cell of a table uses 30 evaluation seeds with 30 freshly generated environments each. For agents that have no trained weights the unit of analysis is the evaluation seed. For a learned agent it is the \emph{trained model}: evaluation seed $s$ uses model $s \bmod m$, so each of the $m$ models is run on $30/m$ evaluation seeds, and the model's score is its mean over those. The reason is that a hundred environments evaluated with one fixed network measure that network, not the training procedure; treating them as independent runs would make the intervals far too narrow. Intervals are 95\% percentile bootstraps over units, applied separately inside each agent when two agents are compared~\cite{efron1993}. Tests are Welch's $t$~\cite{welch1947} on unit scores, effect sizes are Cohen's $d$~\cite{cohen1988} with the pooled standard deviation, and the $p$-values of the @{NPRIMARY} pre-declared comparisons of Tables~\ref{tab:p1}--\ref{tab:p4} are adjusted together with Holm's method~\cite{holm1979}. We report the absolute difference of success rates, its interval, the adjusted $p$-value and $d$ for each of them; in the text, only the difference and interval are quoted, with the adjusted $p$ added when it is not below 0.05. Per-model results for every learned agent are in \texttt{paper/tables/learned\_spread.csv} and appear as dots in Figs.~\ref{fig:regimes} and~\ref{fig:vault}. Primitive-action PPO is run with fewer seeds and environments because its inference is slow. Where an agent succeeds in every episode we also give the 95\% upper bound $3/N$ on its failure rate after $N$ episodes (the ``rule of three''): a perfect score in a finite synthetic sample is not evidence of general reliability.
+
+\begin{proposition}\label{prop:one}
+Let one door have $n$ equally likely candidate keys, exactly one of which opens it. (i)~An agent that never retests a failed key makes $\mathbb{E}[F_{\mathrm{elim}}]=(n-1)/2$ failed tests. (ii)~A stateless lose-shift agent that starts with a uniformly random key and, after each failure, tries a key drawn uniformly from the $n-1$ keys other than the one in hand makes $\mathbb{E}[F_{\mathrm{ls}}]=(n-1)^2/n$ failed tests. The excess $\mathbb{E}[F_{\mathrm{ls}}]-\mathbb{E}[F_{\mathrm{elim}}]=(n-1)(n-2)/(2n)$ is zero for $n=2$ and grows linearly in $n$. (iii)~In the combination vault, an agent that eliminates inconsistent codes makes $\sum_{p=0}^{k-1}(L-p-1)/2$ expected resets.
+\end{proposition}
+\begin{proof}
+(i)~The order in which keys are tried is a uniform random permutation, so the position of the correct key, which equals the number of failures before success, is uniform on $\{0,\dots,n-1\}$ with mean $(n-1)/2$. (ii)~The first test fails with probability $(n-1)/n$. After a failure the held key is known to be wrong, so the next draw is uniform over $n-1$ keys of which exactly one is correct; the number of further attempts until success is geometric with success probability $1/(n-1)$, and so it contains $n-2$ failures on average. Hence $\mathbb{E}[F_{\mathrm{ls}}]=\frac{n-1}{n}\,(1+(n-2))=\frac{(n-1)^2}{n}$, and the excess is $\frac{(n-1)^2}{n}-\frac{n-1}{2}=\frac{(n-1)(n-2)}{2n}$. (iii)~At position $p$ the code is injective, so $L-p$ levers remain possible and they are equally likely a priori; (i) applies with $n=L-p$, and the presses that merely replay the already-known prefix are not failures. Summing over $p=0,\dots,k-1$ gives the stated total.
+\end{proof}
+For the grid we use $n$ = the number of keys reachable before the door opens, because that, not the nominal color count, is the set the agent can actually choose from.
+

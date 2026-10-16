@@ -1,0 +1,7 @@
+agent,survival,s_lo,s_hi,win,w_lo,w_hi,best_in
+Default design,0.5721,0.4886,0.6435,0.0,0.0,0.0,0
+Random search,0.6671,0.5842,0.7238,0.3982,0.2554,0.5429,4
+Hill-climbing (reactive),0.6648,0.5874,0.7116,0.2429,0.1661,0.3125,6
+Posterior sampling,0.6366,0.5662,0.6972,0.2875,0.1536,0.4286,1
+"Hypothesis, no info bonus",0.6234,0.5542,0.6817,0.1821,0.1036,0.2643,1
+Hypothesis (EV + info gain),0.6182,0.5422,0.688,0.2875,0.1464,0.4357,2

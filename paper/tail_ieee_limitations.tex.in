@@ -1,0 +1,10 @@
+The limitations are real:
+\begin{enumerate}
+\item \emph{Scale and realism.} Both families are synthetic and, apart from the jammed-lock test, deterministic and fully observable. No real-world data are used, and nothing here supports a claim about scientific discovery, robotics or other real settings.
+\item \emph{Hand-built interface.} The hypothesis spaces and the macro-action vocabulary are hand-specified, and so are the generic skills. The hypothesis agent's templates match the generators; reactive and primitive agents do not know them (PSRL and the macro agents share them).
+\item \emph{Training runs.} The number of independently trained models differs by cell: @{NM('macro_gru','main')} each for Macro-FF/GRU on the mixed-difficulty distribution and @{NM('macro_gru','D_rule_permutation')} on regime D; @{NM('macro_gruB')} for Macro-GRU+belief; @{NM('macro_gru','B_compositional')}, @{NM('macro_gru','C_chain_length')} and @{NM('macro_gru','E_novel_combination')} on regimes B, C and E; @{NM('macro_gru','A_interpolation')} and @{NM('macro_gru','C2_size_only')} on A and C2; @{NGENERIC} for the generic-skill agents (no inference reported); one for primitive PPO. Intervals in cells with few runs are unreliable.
+\item \emph{Finite samples.} Perfect scores come from finite samples and say nothing about reliability beyond them.
+\item \emph{Baselines and constants.} Primitive PPO is under-trained. The constants $V,\mu,\alpha,\beta$ were set by hand, and steps-to-success is subject to survivor bias.
+\item \emph{Noise and the external check.} The only noise tested is jammed locks. The CausalGame check covers the survival score only, with generic surrogate-model searchers rather than the templated hypothesis agent of the grid.
+\item \emph{Scope.} No language or foundation models are studied.
+\end{enumerate}

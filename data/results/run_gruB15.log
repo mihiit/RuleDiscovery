@@ -1,0 +1,14 @@
+macro_gruB 0.962
+1 macro_gruB 1.0
+2 macro_gruB 1.0
+3 macro_gruB 0.976
+4 macro_gruB 0.918
+5 macro_gruB 0.737
+D_rule_permutation macro_gruB train 0.992 test 0.977
+macro_gruB d 3 slip 0.0 0.958
+macro_gruB d 3 slip 0.2 0.948
+macro_gruB d 3 slip 0.4 0.92
+macro_gruB d 4 slip 0.0 0.915
+macro_gruB d 4 slip 0.2 0.777
+macro_gruB d 4 slip 0.4 0.598
+ALLDONE

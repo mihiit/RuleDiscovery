@@ -1,0 +1,36 @@
+hyp_adaptive 0.973
+1 hyp_adaptive 1.0
+2 hyp_adaptive 1.0
+3 hyp_adaptive 0.981
+4 hyp_adaptive 0.93
+5 hyp_adaptive 0.733
+A_interpolation hyp_adaptive train 1.0 test 0.999
+B_compositional hyp_adaptive train 0.989 test 0.969
+C_chain_length hyp_adaptive train 1.0 test 0.996
+C2_size_only hyp_adaptive train 0.973 test 0.998
+D_rule_permutation hyp_adaptive train 0.977 test 0.981
+E_novel_combination hyp_adaptive train 0.994 test 0.969
+master_key_d3 reactive 0.957
+master_key_d3 psrl 1.0
+master_key_d3 psrl_nonexcl 1.0
+master_key_d3 hypothesis 0.23
+master_key_d3 hyp_nonexcl 1.0
+master_key_d3 hyp_adaptive 1.0
+master_key_d4 reactive 0.963
+master_key_d4 psrl 0.966
+master_key_d4 psrl_nonexcl 0.98
+master_key_d4 hypothesis 0.182
+master_key_d4 hyp_nonexcl 1.0
+master_key_d4 hyp_adaptive 1.0
+exclusive_control_d3 reactive 0.677
+exclusive_control_d3 psrl 1.0
+exclusive_control_d3 psrl_nonexcl 0.999
+exclusive_control_d3 hypothesis 1.0
+exclusive_control_d3 hyp_nonexcl 1.0
+exclusive_control_d3 hyp_adaptive 1.0
+exclusive_control_d4 reactive 0.119
+exclusive_control_d4 psrl 0.872
+exclusive_control_d4 psrl_nonexcl 0.866
+exclusive_control_d4 hypothesis 0.982
+exclusive_control_d4 hyp_nonexcl 0.862
+exclusive_control_d4 hyp_adaptive 0.981

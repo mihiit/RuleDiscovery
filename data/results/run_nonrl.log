@@ -1,0 +1,451 @@
+== run_baselines 16:13:12
+random 0.0
+reactive 0.381
+psrl 0.973
+hypothesis 0.973
+== run_scaling 16:13:49
+1 random 0.004
+2 random 0.0
+3 random 0.0
+4 random 0.0
+5 random 0.0
+1 reactive 1.0
+2 reactive 0.987
+3 reactive 0.397
+4 reactive 0.08
+5 reactive 0.074
+1 psrl 1.0
+2 psrl 1.0
+3 psrl 0.982
+4 psrl 0.879
+5 psrl 0.656
+1 hypothesis 1.0
+2 hypothesis 1.0
+3 hypothesis 0.981
+4 hypothesis 0.93
+5 hypothesis 0.736
+== run_generalization 16:17:24
+A_interpolation random train 0.008 test 0.0
+A_interpolation reactive train 0.983 test 0.827
+A_interpolation psrl train 1.0 test 0.999
+A_interpolation hypothesis train 1.0 test 0.999
+A_interpolation hyp_transfer train 1.0 test 0.997
+B_compositional random train 0.0 test 0.0
+B_compositional reactive train 0.813 test 0.4
+B_compositional psrl train 0.991 test 0.971
+B_compositional hypothesis train 0.989 test 0.969
+B_compositional hyp_transfer train 0.988 test 0.968
+C_chain_length random train 0.0 test 0.0
+C_chain_length reactive train 0.964 test 0.544
+C_chain_length psrl train 1.0 test 0.989
+C_chain_length hypothesis train 1.0 test 0.996
+C_chain_length hyp_transfer train 1.0 test 0.992
+C2_size_only random train 0.0 test 0.0
+C2_size_only reactive train 0.381 test 0.589
+C2_size_only psrl train 0.973 test 0.998
+C2_size_only hypothesis train 0.973 test 0.998
+C2_size_only hyp_transfer train 0.973 test 0.998
+D_rule_permutation random train 0.0 test 0.0
+D_rule_permutation reactive train 0.118 test 0.118
+D_rule_permutation psrl train 0.879 test 0.891
+D_rule_permutation hypothesis train 0.977 test 0.981
+D_rule_permutation hyp_transfer train 1.0 test 1.0
+E_novel_combination random train 0.001 test 0.0
+E_novel_combination reactive train 0.958 test 0.412
+E_novel_combination psrl train 0.998 test 0.971
+E_novel_combination hypothesis train 0.994 test 0.969
+E_novel_combination hyp_transfer train 0.994 test 0.968
+== run_ablation 16:25:44
+1_memory full_memory 0.928
+== run_ablation 03:32:27
+1_memory full_memory 0.928
+1_memory fixed_memory_3 0.907
+1_memory no_memory 0.0
+2_active_exploration info_driven 0.928
+2_active_exploration random_explore 0.814
+3_revision revision_on 0.928
+3_revision revision_off 0.228
+4_info_gain_weight lambda_0.0 0.913
+4_info_gain_weight lambda_0.25 0.926
+4_info_gain_weight lambda_0.5 0.928
+4_info_gain_weight lambda_1.0 0.936
+4_info_gain_weight lambda_2.0 0.93
+4_info_gain_weight lambda_4.0 0.944
+4_info_gain_weight lambda_8.0 0.977
+5_action_cost mu_0.0 0.908
+5_action_cost mu_0.05 0.928
+5_action_cost mu_0.2 0.533
+d5 lambda 0.0 0.709
+d5 lambda 0.25 0.739
+d5 lambda 0.5 0.768
+d5 lambda 1.0 0.787
+d5 lambda 2.0 0.811
+d5 lambda 4.0 0.823
+d5 lambda 8.0 0.862
+== run_rule_types 03:37:00
+typed_SD_d3 reactive 0.962
+typed_SD_d3 psrl 0.512
+typed_SD_d3 psrl_open 1.0
+typed_SD_d3 hyp_closed_vocab 0.469
+typed_SD_d3 hyp_open_vocab 1.0
+typed_SD_d4 reactive 0.951
+typed_SD_d4 psrl 0.329
+typed_SD_d4 psrl_open 1.0
+typed_SD_d4 hyp_closed_vocab 0.254
+typed_SD_d4 hyp_open_vocab 0.999
+standard_d3 reactive 0.402
+standard_d3 psrl 0.973
+standard_d3 psrl_open 0.973
+standard_d3 hyp_closed_vocab 0.972
+standard_d3 hyp_open_vocab 0.972
+== run_recovery 03:42:28
+reactive 0.667 recovery 0.611
+hyp_no_revision 0.179 recovery 0.219
+hyp_with_revision 0.78 recovery 0.918
+hyp_no_prior 1.0 recovery 1.0
+psrl 0.998 recovery 1.0
+== failure_analysis 03:43:26
+budget 4 100 0.568
+budget 4 200 0.916
+budget 4 400 0.951
+budget 4 800 0.951
+budget 5 100 0.232
+budget 5 200 0.742
+budget 5 400 0.863
+budget 5 800 0.87
+{'counts': {'distractor interference': 189, 'long-horizon dependency': 45, 'repeated refuted hypothesis': 2}, 'n_failed': 236, 'n_episodes': 900, 'examples': [{'env': 'env_d5_s2900004', 'category': 'distractor interference', 'steps': 200, 'tests': 14, 'redundant': 0}, {'env': 'env_d5_s2901001', 'category': 'long-horizon dependency', 'steps': 200, 'tests': 59, 'redundant': 0}, {'env': 'env_d5_s2907006', 'category': 'repeated refuted hypothesis', 'steps': 200, 'tests': 187, 'redundant': 180}]}
+ALLDONE
+== run_generalization 04:34:23
+A_interpolation random train 0.008 test 0.0
+A_interpolation reactive train 0.983 test 0.827
+A_interpolation psrl train 1.0 test 0.999
+A_interpolation hypothesis train 1.0 test 0.999
+A_interpolation hyp_transfer train 1.0 test 0.997
+B_compositional random train 0.0 test 0.0
+B_compositional reactive train 0.813 test 0.4
+B_compositional psrl train 0.991 test 0.971
+B_compositional hypothesis train 0.989 test 0.969
+B_compositional hyp_transfer train 0.988 test 0.968
+C_chain_length random train 0.0 test 0.0
+C_chain_length reactive train 0.964 test 0.544
+C_chain_length psrl train 1.0 test 0.989
+C_chain_length hypothesis train 1.0 test 0.996
+C_chain_length hyp_transfer train 1.0 test 0.992
+C2_size_only random train 0.0 test 0.0
+C2_size_only reactive train 0.381 test 0.589
+C2_size_only psrl train 0.973 test 0.998
+C2_size_only hypothesis train 0.973 test 0.998
+C2_size_only hyp_transfer train 0.973 test 0.998
+D_rule_permutation random train 0.0 test 0.0
+D_rule_permutation reactive train 0.118 test 0.118
+D_rule_permutation psrl train 0.879 test 0.891
+D_rule_permutation hypothesis train 0.977 test 0.981
+D_rule_permutation hyp_transfer train 1.0 test 1.0
+E_novel_combination random train 0.001 test 0.0
+E_novel_combination reactive train 0.958 test 0.412
+E_novel_combination psrl train 0.998 test 0.971
+E_novel_combination hypothesis train 0.994 test 0.969
+E_novel_combination hyp_transfer train 0.994 test 0.968
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/claude/interactive-rule-discovery/experiments/run_generalization.py", line 24, in main
+    save("generalization", rows, dict(seeds=seeds, envs=envs, n_train=n_train, rl_seeds=RL_SEEDS, rl_envs=RL_ENVS,
+  File "/home/claude/interactive-rule-discovery/experiments/common.py", line 89, in save
+    old = pd.read_csv(path)
+          ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py", line 1645, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py", line 1922, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/c_parser_wrapper.py", line 95, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 575, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+ALLDONE
+== run_generalization 12:23:57
+A_interpolation random train 0.008 test 0.0
+A_interpolation reactive train 0.983 test 0.827
+A_interpolation psrl train 1.0 test 0.999
+A_interpolation hypothesis train 1.0 test 0.999
+A_interpolation hyp_transfer train 1.0 test 0.997
+B_compositional random train 0.0 test 0.0
+B_compositional reactive train 0.813 test 0.4
+B_compositional psrl train 0.991 test 0.971
+B_compositional hypothesis train 0.989 test 0.969
+B_compositional hyp_transfer train 0.988 test 0.968
+C_chain_length random train 0.0 test 0.0
+C_chain_length reactive train 0.964 test 0.544
+C_chain_length psrl train 1.0 test 0.989
+C_chain_length hypothesis train 1.0 test 0.996
+C_chain_length hyp_transfer train 1.0 test 0.992
+C2_size_only random train 0.0 test 0.0
+C2_size_only reactive train 0.381 test 0.589
+C2_size_only psrl train 0.973 test 0.998
+C2_size_only hypothesis train 0.973 test 0.998
+C2_size_only hyp_transfer train 0.973 test 0.998
+D_rule_permutation random train 0.0 test 0.0
+D_rule_permutation reactive train 0.118 test 0.118
+D_rule_permutation psrl train 0.879 test 0.891
+D_rule_permutation hypothesis train 0.977 test 0.981
+D_rule_permutation hyp_transfer train 1.0 test 1.0
+E_novel_combination random train 0.001 test 0.0
+E_novel_combination reactive train 0.958 test 0.412
+E_novel_combination psrl train 0.998 test 0.971
+E_novel_combination hypothesis train 0.994 test 0.969
+E_novel_combination hyp_transfer train 0.994 test 0.968
+ALLDONE
+== run_factorial 18:29:29
+4 hyp_EV_l0 0.922
+4 hyp_EV_l0.5 0.934
+4 hyp_EV_l8 0.981
+4 psrl_S_l0 0.898
+4 psrl_S_l0.5 0.901
+4 psrl_S_l8 0.95
+5 hyp_EV_l0 0.682
+5 hyp_EV_l0.5 0.746
+5 hyp_EV_l8 0.873
+5 psrl_S_l0 0.657
+5 psrl_S_l0.5 0.66
+5 psrl_S_l8 0.791
+== run_master_key 18:32:15
+master_key_d3 reactive 0.957
+master_key_d3 psrl 1.0
+master_key_d3 psrl_nonexcl 1.0
+master_key_d3 hypothesis 0.23
+master_key_d3 hyp_nonexcl 1.0
+master_key_d4 reactive 0.963
+master_key_d4 psrl 0.966
+master_key_d4 psrl_nonexcl 0.98
+master_key_d4 hypothesis 0.182
+master_key_d4 hyp_nonexcl 1.0
+exclusive_control_d3 reactive 0.677
+exclusive_control_d3 psrl 1.0
+exclusive_control_d3 psrl_nonexcl 0.999
+exclusive_control_d3 hypothesis 1.0
+exclusive_control_d3 hyp_nonexcl 1.0
+exclusive_control_d4 reactive 0.119
+exclusive_control_d4 psrl 0.872
+exclusive_control_d4 psrl_nonexcl 0.866
+exclusive_control_d4 hypothesis 0.982
+exclusive_control_d4 hyp_nonexcl 0.862
+ALLDONE
+== run_theory 18:38:50
+2 reactive 0.289 pred elim 0.5 pred lose-shift 0.5
+2 hypothesis 0.271 pred elim 0.5 pred lose-shift 0.5
+2 psrl 0.277 pred elim 0.5 pred lose-shift 0.5
+3 reactive 1.048 pred elim 1.0 pred lose-shift 1.333
+3 hypothesis 0.541 pred elim 1.0 pred lose-shift 1.333
+3 psrl 0.553 pred elim 1.0 pred lose-shift 1.333
+4 reactive 1.541 pred elim 1.5 pred lose-shift 2.25
+4 hypothesis 0.779 pred elim 1.5 pred lose-shift 2.25
+4 psrl 0.763 pred elim 1.5 pred lose-shift 2.25
+ALLDONE
+== run_theory 18:42:27
+d3 reactive: n=1.57 observed 0.289 elim-pred 0.287 lose-shift-pred 0.287
+d3 hypothesis: n=1.57 observed 0.271 elim-pred 0.287 lose-shift-pred 0.287
+d3 psrl: n=1.57 observed 0.277 elim-pred 0.287 lose-shift-pred 0.287
+d4 reactive: n=2.09 observed 1.048 elim-pred 0.543 lose-shift-pred 0.635
+d4 hypothesis: n=2.09 observed 0.541 elim-pred 0.543 lose-shift-pred 0.635
+d4 psrl: n=2.09 observed 0.553 elim-pred 0.543 lose-shift-pred 0.635
+d5 reactive: n=2.60 observed 1.541 elim-pred 0.801 lose-shift-pred 1.046
+d5 hypothesis: n=2.60 observed 0.779 elim-pred 0.801 lose-shift-pred 1.046
+d5 psrl: n=2.60 observed 0.763 elim-pred 0.801 lose-shift-pred 1.046
+ALLDONE
+== run_baselines 04:32:45
+random 0.0
+reactive 0.381
+psrl 0.973
+hypothesis 0.973
+ALLDONE
+== run_baselines 16:08:56
+scripts/run_stages.sh: line 9: python: command not found
+== run_scaling 16:08:57
+scripts/run_stages.sh: line 9: python: command not found
+== run_generalization 16:08:57
+scripts/run_stages.sh: line 9: python: command not found
+== run_ablation 16:08:57
+scripts/run_stages.sh: line 9: python: command not found
+== run_factorial 16:08:58
+scripts/run_stages.sh: line 9: python: command not found
+== run_master_key 16:08:58
+scripts/run_stages.sh: line 9: python: command not found
+== run_theory 16:08:58
+scripts/run_stages.sh: line 9: python: command not found
+== run_rule_types 16:08:58
+scripts/run_stages.sh: line 9: python: command not found
+== run_recovery 16:08:58
+scripts/run_stages.sh: line 9: python: command not found
+== failure_analysis 16:08:58
+scripts/run_stages.sh: line 9: python: command not found
+ALLDONE
+== run_baselines 21:41:46
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_baselines.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_scaling 21:41:47
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_scaling.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_generalization 21:41:47
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_generalization.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_ablation 21:41:47
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_ablation.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_factorial 21:41:47
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_factorial.py", line 3, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_master_key 21:41:47
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_master_key.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_theory 21:41:47
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_theory.py", line 4, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_rule_types 21:41:48
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_rule_types.py", line 3, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_recovery 21:41:48
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_recovery.py", line 3, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== failure_analysis 21:41:48
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\failure_analysis.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+ALLDONE
+== run_baselines 21:43:07
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_baselines.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_scaling 21:43:07
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_scaling.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_generalization 21:43:07
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_generalization.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_ablation 21:43:07
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_ablation.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_factorial 21:43:08
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_factorial.py", line 3, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_master_key 21:43:08
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_master_key.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_theory 21:43:08
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_theory.py", line 4, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_rule_types 21:43:08
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_rule_types.py", line 3, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_recovery 21:43:08
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_recovery.py", line 3, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== failure_analysis 21:43:08
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\failure_analysis.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+ALLDONE

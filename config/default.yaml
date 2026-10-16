@@ -1,0 +1,8 @@
+# Values used for the reported results. They are set in scripts/*.sh and experiments/*.py (this file documents them; scripts do not parse it).
+evaluation: {seeds: 30, envs_per_seed: 30, max_steps: 200, rl_primitive_seeds: 15, rl_primitive_envs: 20}
+hypothesis_agent: {alpha: 0.6, beta: 0.6, reject_after: 2, lambda: 0.5, mu: 0.05, V_gate: 3.0, V_target: 10.0}
+learned_agents:
+  macro: {training_seeds: 3, episodes_mixed: 12000, episodes_per_regime: 5000}
+  generic: {training_seeds: 2, episodes_mixed: "6000 (seed-0 GRU: ~6800)"}
+  vault: {training_seeds: 3, episodes: 30000, train_codes: "L in {4,5}, k in {2,3}", test_codes: "L in {6,7}, k in {4,5}", max_steps: 150}
+  primitive_ppo: {steps: 1200000, note: "under-trained on one CPU core"}

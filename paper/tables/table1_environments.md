@@ -1,0 +1,9 @@
+**Environment configurations per difficulty (KD key-door, SB switch-bridge, PB push-block).**
+
+|   Difficulty |   Grid | Gates          |   Distractors |   Traps |
+|-------------:|-------:|:---------------|--------------:|--------:|
+|            1 |      8 | KD             |             0 |       0 |
+|            2 |     10 | KD+SB          |             0 |       1 |
+|            3 |     10 | KD+SB+PB       |             1 |       2 |
+|            4 |     12 | KD+SB+PB+KD    |             2 |       3 |
+|            5 |     14 | KD+SB+PB+KD+SB |             3 |       4 |

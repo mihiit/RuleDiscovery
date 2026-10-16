@@ -1,0 +1,35 @@
+{
+  "seeds": 30,
+  "envs": 30,
+  "n_train": 40,
+  "rl_seeds": 15,
+  "rl_envs": 20,
+  "regimes": {
+    "A_interpolation": {
+      "train": "[{'rules': ('KEY_DOOR',)}, {'rules': ('SWITCH_BRIDGE',)}, {'rules': ('PUSH_BLOCK',)}]",
+      "test": "[{'rules': ('KEY_DOOR', 'SWITCH_BRIDGE')}, {'rules': ('KEY_DOOR', 'PUSH_BLOCK')}, {'rules': ('SWITCH_BRIDGE', 'PUSH_BLOCK')}]"
+    },
+    "B_compositional": {
+      "train": "[{'rules': ('KEY_DOOR', 'SWITCH_BRIDGE')}, {'rules': ('KEY_DOOR', 'PUSH_BLOCK')}, {'rules': ('SWITCH_BRIDGE', 'PUSH_BLOCK')}]",
+      "test": "[{'rules': ('KEY_DOOR', 'SWITCH_BRIDGE', 'PUSH_BLOCK')}]"
+    },
+    "C_chain_length": {
+      "train": "[{'rules': ('KEY_DOOR', 'SWITCH_BRIDGE'), 'grid_size': 10}]",
+      "test": "[{'rules': ('KEY_DOOR', 'SWITCH_BRIDGE', 'KEY_DOOR', 'SWITCH_BRIDGE'), 'grid_size': 12}]"
+    },
+    "C2_size_only": {
+      "train": "[{'rules': ('KEY_DOOR', 'SWITCH_BRIDGE', 'PUSH_BLOCK'), 'grid_size': 10}]",
+      "test": "[{'rules': ('KEY_DOOR', 'SWITCH_BRIDGE', 'PUSH_BLOCK'), 'grid_size': 14}]"
+    },
+    "D_rule_permutation": {
+      "train": "[{'rules': ('KEY_DOOR', 'KEY_DOOR', 'SWITCH_BRIDGE', 'KEY_DOOR'), 'colors': ('red', 'blue', 'green', 'yellow'), 'mapping': 'identity', 'grid_size': 12}]",
+      "test": "[{'rules': ('KEY_DOOR', 'KEY_DOOR', 'SWITCH_BRIDGE', 'KEY_DOOR'), 'colors': ('purple', 'orange', 'cyan', 'pink'), 'mapping': 'identity', 'grid_size': 12}]"
+    },
+    "E_novel_combination": {
+      "train": "[{'rules': ('KEY_DOOR',)}, {'rules': ('SWITCH_BRIDGE', 'PUSH_BLOCK')}]",
+      "test": "[{'rules': ('KEY_DOOR', 'SWITCH_BRIDGE', 'PUSH_BLOCK')}]"
+    }
+  },
+  "timestamp": "2026-10-11T13:46:18",
+  "n_rows": 2940
+}

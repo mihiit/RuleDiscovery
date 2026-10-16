@@ -1,0 +1,9 @@
+Agent,Policy,Memory,Hypotheses
+Random,uniform over 7 actions,-,-
+Reactive,BFS heuristics + 1 lose-shift bit,none,none
+PSRL,"posterior-sampled bindings, nearest-first macros",evidence log,sampled assignment
+Hypothesis,macros chosen by U=R+lam*IG-mu*cost,episodic,KD/SB/PUSH(/SD) with alpha/beta updates
+Macro-FF,PPO over macro-actions (no belief features),last macro+outcome,implicit
+Macro-GRU,"PPO over macro-actions, GRU history",recurrent state,implicit
+PPO-FF,"CNN policy, PPO (JAX), shaped reward",none (feedback input),implicit
+PPO-GRU,"CNN+GRU policy (RL^2-style), PPO, shaped reward",recurrent state,implicit

@@ -1,0 +1,28 @@
+**Assumption violation: one key opens two doors.**
+
+| Environments         | Agent        | Success              | Steps to success     |
+|:---------------------|:-------------|:---------------------|:---------------------|
+| master_key_d3        | reactive     | 0.957 [0.943, 0.969] | 42.2 [41.7, 42.8]    |
+| master_key_d3        | psrl         | 1.000 [1.000, 1.000] | 58.4 [56.9, 59.8]    |
+| master_key_d3        | psrl_nonexcl | 1.000 [1.000, 1.000] | 48.1 [47.0, 49.2]    |
+| master_key_d3        | hypothesis   | 0.230 [0.199, 0.262] | 35.0 [34.1, 35.9]    |
+| master_key_d3        | hyp_nonexcl  | 1.000 [1.000, 1.000] | 35.9 [35.4, 36.3]    |
+| master_key_d3        | hyp_adaptive | 1.000 [1.000, 1.000] | 56.7 [55.2, 58.1]    |
+| master_key_d4        | reactive     | 0.963 [0.950, 0.977] | 55.2 [54.4, 55.9]    |
+| master_key_d4        | psrl         | 0.966 [0.953, 0.978] | 90.0 [87.4, 92.4]    |
+| master_key_d4        | psrl_nonexcl | 0.980 [0.969, 0.990] | 73.8 [71.8, 76.0]    |
+| master_key_d4        | hypothesis   | 0.182 [0.157, 0.208] | 45.2 [44.0, 46.2]    |
+| master_key_d4        | hyp_nonexcl  | 1.000 [1.000, 1.000] | 46.8 [46.1, 47.4]    |
+| master_key_d4        | hyp_adaptive | 1.000 [1.000, 1.000] | 64.5 [62.8, 66.0]    |
+| exclusive_control_d3 | reactive     | 0.677 [0.648, 0.706] | 90.2 [87.1, 93.5]    |
+| exclusive_control_d3 | psrl         | 1.000 [1.000, 1.000] | 62.4 [60.8, 64.2]    |
+| exclusive_control_d3 | psrl_nonexcl | 0.999 [0.997, 1.000] | 62.6 [60.7, 64.6]    |
+| exclusive_control_d3 | hypothesis   | 1.000 [1.000, 1.000] | 53.5 [52.2, 54.7]    |
+| exclusive_control_d3 | hyp_nonexcl  | 1.000 [1.000, 1.000] | 62.6 [61.0, 64.3]    |
+| exclusive_control_d3 | hyp_adaptive | 1.000 [1.000, 1.000] | 53.5 [52.2, 54.7]    |
+| exclusive_control_d4 | reactive     | 0.119 [0.101, 0.136] | 124.3 [116.6, 131.4] |
+| exclusive_control_d4 | psrl         | 0.872 [0.850, 0.893] | 112.0 [109.7, 114.5] |
+| exclusive_control_d4 | psrl_nonexcl | 0.866 [0.842, 0.888] | 118.9 [116.4, 121.3] |
+| exclusive_control_d4 | hypothesis   | 0.982 [0.972, 0.991] | 92.1 [89.7, 94.5]    |
+| exclusive_control_d4 | hyp_nonexcl  | 0.862 [0.840, 0.884] | 119.1 [116.3, 121.9] |
+| exclusive_control_d4 | hyp_adaptive | 0.981 [0.970, 0.990] | 92.1 [89.7, 94.5]    |

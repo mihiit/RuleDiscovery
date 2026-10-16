@@ -1,0 +1,9 @@
+== run_baselines
+macro_gruB 0.964
+== run_scaling
+1 macro_gruB 1.0
+2 macro_gruB 1.0
+3 macro_gruB 0.973
+4 macro_gruB 0.914
+5 macro_gruB 0.737
+ALLDONE

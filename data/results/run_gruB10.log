@@ -1,0 +1,8 @@
+macro_gruB 0.962
+1 macro_gruB 1.0
+2 macro_gruB 1.0
+3 macro_gruB 0.973
+4 macro_gruB 0.919
+5 macro_gruB 0.74
+D_rule_permutation macro_gruB train 0.988 test 0.976
+ALLDONE

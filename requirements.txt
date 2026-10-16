@@ -1,0 +1,8 @@
+numpy
+scipy
+pandas
+matplotlib
+tabulate
+pyyaml
+pytest
+jax

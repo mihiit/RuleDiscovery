@@ -1,0 +1,38 @@
+\documentclass[runningheads]{llncs}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{url}
+\usepackage{placeins}
+\usepackage{color}
+\renewcommand\UrlFont{\color{blue}\rmfamily}
+\setlength{\textfloatsep}{7pt plus 2pt minus 2pt}
+\setlength{\floatsep}{7pt plus 2pt minus 2pt}
+\emergencystretch=2em
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\dblfloatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\setcounter{dbltopnumber}{3}
+
+
+\begin{document}
+\title{Is It the Beliefs? A Matched-Information Study of Hidden-Rule Discovery by Hypothesis-Testing, Bayesian and Learned Agents}
+\titlerunning{Is It the Beliefs? Matched-Information Hidden-Rule Discovery}
+\author{Mihit Nanda}
+\authorrunning{M. Nanda}
+\institute{IILM University, Greater Noida, India}
+\maketitle
+
+\begin{abstract}
+Whether explicit hypothesis testing helps an agent discover hidden rules depends on what each agent is told. We compare a hypothesis-testing agent, which is given hand-built rule templates, with posterior-sampling and PPO agents that share one macro-action vocabulary, in a procedural grid world with six generalization regimes and in a combination vault. Learned agents without belief inputs trail the hypothesis agent at difficulty 5 (@{SR('macro_gru',5)!.0%} against @{SR('hypothesis',5)!.0%}, @{NMODELS} training runs) and fail on unseen color symbols (@{TE('macro_gru','D_rule_permutation')!.2f} against @{TE('hypothesis','D_rule_permutation')!.2f}) and on larger vault codes (@{VT('vault_gru','larger')!.2f} against 1.00). A matched-information control, a learned agent that receives the hypothesis tracker's beliefs, closes most of that gap (@{SR('macro_gruB',5)!.0%} at difficulty 5, @{TE('macro_gruB','D_rule_permutation')!.2f} on unseen colors; @{NM('macro_gruB')} runs), so the advantage is mainly one of information supplied, not of explicit testing as such. A hard exclusivity assumption makes the hypothesis agent fail when it is false (@{MK('hypothesis','master_key_d3')!.2f} success); a soft prior that adapts to detectable violations restores @{MK('hyp_adaptive','master_key_d3')!.2f}. With jammed locks (40\% failure), PSRL falls to @{SRN('psrl',3,0.4)!.0%} at difficulty 3 while the hypothesis agent keeps @{SRN('hypothesis',3,0.4)!.0%}. On the survival part of the CausalGame benchmark, where no hypothesis space is supplied, a model-based EV+information-gain agent does not beat random search or hill-climbing (survival @{CGS('Hypothesis (EV + info gain)','survival')!.2f} against @{CGS('Random search','survival')!.2f} and @{CGS('Hill-climbing (reactive)','survival')!.2f}). An elementary proposition predicts the elimination agent's failed-test counts, as a check on the benchmark. The environments are synthetic and deterministic, the vocabularies hand-built and the primitive-action PPO baseline under-trained; we make no claim about ARC-AGI-3, deep RL in general, or general intelligence.
+\keywords{Rule discovery \and Hypothesis testing \and Posterior sampling \and Compositional generalization \and Learned agents.}
+\end{abstract}
+

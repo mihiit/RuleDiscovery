@@ -1,0 +1,9 @@
+{
+  "seeds": 30,
+  "envs": 30,
+  "rl_seeds": 15,
+  "rl_envs": 20,
+  "max_steps": 200,
+  "timestamp": "2026-10-11T13:24:37",
+  "n_rows": 1650
+}

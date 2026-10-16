@@ -1,0 +1,157 @@
+antenna_trap default 0.504
+antenna_trap random 0.636
+antenna_trap hillclimb 0.67
+antenna_trap psrl 0.568
+antenna_trap hyp_ev 0.525
+antenna_trap hyp_ev_noig 0.587
+antenna_trap_high_def default 0.496
+antenna_trap_high_def random 0.666
+antenna_trap_high_def hillclimb 0.678
+antenna_trap_high_def psrl 0.558
+antenna_trap_high_def hyp_ev 0.563
+antenna_trap_high_def hyp_ev_noig 0.557
+antenna_trap_local_optima default 0.501
+antenna_trap_local_optima random 0.674
+antenna_trap_local_optima hillclimb 0.709
+antenna_trap_local_optima psrl 0.572
+antenna_trap_local_optima hyp_ev 0.529
+antenna_trap_local_optima hyp_ev_noig 0.54
+antenna_trap_no_history default 0.496
+antenna_trap_no_history random 0.654
+antenna_trap_no_history hillclimb 0.723
+antenna_trap_no_history psrl 0.573
+antenna_trap_no_history hyp_ev 0.511
+antenna_trap_no_history hyp_ev_noig 0.588
+antenna_trap_no_selection_bias default 0.497
+antenna_trap_no_selection_bias random 0.659
+antenna_trap_no_selection_bias hillclimb 0.669
+antenna_trap_no_selection_bias psrl 0.591
+antenna_trap_no_selection_bias hyp_ev 0.579
+antenna_trap_no_selection_bias hyp_ev_noig 0.561
+antenna_trap_simpsons_paradox default 0.501
+antenna_trap_simpsons_paradox random 0.655
+antenna_trap_simpsons_paradox hillclimb 0.685
+antenna_trap_simpsons_paradox psrl 0.606
+antenna_trap_simpsons_paradox hyp_ev 0.491
+antenna_trap_simpsons_paradox hyp_ev_noig 0.572
+deployment_zone_trap_categorical default 0.701
+deployment_zone_trap_categorical random 0.771
+deployment_zone_trap_categorical hillclimb 0.725
+deployment_zone_trap_categorical psrl 0.755
+deployment_zone_trap_categorical hyp_ev 0.768
+deployment_zone_trap_categorical hyp_ev_noig 0.73
+deployment_zone_trap_categorical_high_def default 0.7
+deployment_zone_trap_categorical_high_def random 0.763
+deployment_zone_trap_categorical_high_def hillclimb 0.732
+deployment_zone_trap_categorical_high_def psrl 0.76
+deployment_zone_trap_categorical_high_def hyp_ev 0.771
+deployment_zone_trap_categorical_high_def hyp_ev_noig 0.737
+deployment_zone_trap_categorical_local_optima default 0.701
+deployment_zone_trap_categorical_local_optima random 0.775
+deployment_zone_trap_categorical_local_optima hillclimb 0.725
+deployment_zone_trap_categorical_local_optima psrl 0.768
+deployment_zone_trap_categorical_local_optima hyp_ev 0.759
+deployment_zone_trap_categorical_local_optima hyp_ev_noig 0.743
+deployment_zone_trap_categorical_no_history default 0.702
+deployment_zone_trap_categorical_no_history random 0.769
+deployment_zone_trap_categorical_no_history hillclimb 0.727
+deployment_zone_trap_categorical_no_history psrl 0.762
+deployment_zone_trap_categorical_no_history hyp_ev 0.751
+deployment_zone_trap_categorical_no_history hyp_ev_noig 0.739
+deployment_zone_trap_categorical_no_selection_bias default 0.713
+deployment_zone_trap_categorical_no_selection_bias random 0.709
+deployment_zone_trap_categorical_no_selection_bias hillclimb 0.711
+deployment_zone_trap_categorical_no_selection_bias psrl 0.712
+deployment_zone_trap_categorical_no_selection_bias hyp_ev 0.714
+deployment_zone_trap_categorical_no_selection_bias hyp_ev_noig 0.717
+deployment_zone_trap_categorical_simpsons_paradox default 0.705
+deployment_zone_trap_categorical_simpsons_paradox random 0.764
+deployment_zone_trap_categorical_simpsons_paradox hillclimb 0.721
+deployment_zone_trap_categorical_simpsons_paradox psrl 0.762
+deployment_zone_trap_categorical_simpsons_paradox hyp_ev 0.772
+deployment_zone_trap_categorical_simpsons_paradox hyp_ev_noig 0.739
+deployment_zone_trap_env_shift default 0.635
+deployment_zone_trap_env_shift random 0.644
+deployment_zone_trap_env_shift hillclimb 0.635
+deployment_zone_trap_env_shift psrl 0.634
+deployment_zone_trap_env_shift hyp_ev 0.637
+deployment_zone_trap_env_shift hyp_ev_noig 0.634
+weather_noise default 0.157
+weather_noise random 0.201
+weather_noise hillclimb 0.198
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/usr/local/lib/python3.12/dist-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/usr/local/lib/python3.12/dist-packages/urllib3/connection.py", line 500, in request
+    self.endheaders()
+  File "/usr/lib/python3.12/http/client.py", line 1351, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.12/http/client.py", line 1111, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.12/http/client.py", line 1055, in send
+    self.connect()
+  File "/usr/local/lib/python3.12/dist-packages/urllib3/connection.py", line 331, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/urllib3/connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: HTTPConnection(host='localhost', port=8000): Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/agent/register (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/claude/interactive-rule-discovery/external/causalgame/run_causalgame.py", line 33, in <module>
+    main(int(sys.argv[1]) if len(sys.argv) > 1 else 40)
+  File "/home/claude/interactive-rule-discovery/external/causalgame/run_causalgame.py", line 23, in main
+    sess = Session(sc, an)
+           ^^^^^^^^^^^^^^^
+  File "/home/claude/interactive-rule-discovery/external/causalgame/cg_adapter.py", line 94, in __init__
+    r = requests.post(URL + "/api/agent/register", json={"model_name": name, "agent_name": name, "experiment": scenario, "execution_mode": "hybrid"}, timeout=30)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/requests/adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/agent/register (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+weather_noise psrl 0.293
+weather_noise hyp_ev 0.285
+weather_noise hyp_ev_noig 0.283

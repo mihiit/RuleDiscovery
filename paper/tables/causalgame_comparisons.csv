@@ -1,0 +1,6 @@
+comparison,diff,lo,hi,p,wins,n,p_holm
+Hypothesis (EV + info gain) vs Posterior sampling,-0.0185,-0.0386,-0.0021,0.1726,6,14,0.5178
+Hypothesis (EV + info gain) vs Hill-climbing (reactive),-0.0467,-0.1011,0.0054,0.3258,8,14,0.6516
+Hypothesis (EV + info gain) vs Random search,-0.049,-0.0876,-0.0117,0.0419,4,14,0.1675
+Hypothesis (EV + info gain) vs Default design,0.0461,0.027,0.0658,0.0006,13,14,0.0031
+"Hypothesis (EV + info gain) vs Hypothesis, no info bonus",-0.0052,-0.0267,0.0136,0.7148,9,14,0.7148

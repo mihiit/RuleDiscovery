@@ -1,0 +1,12 @@
+A_interpolation macro_ff train 0.999 test 0.991
+A_interpolation macro_gru train 0.998 test 0.99
+B_compositional macro_ff train 0.982 test 0.96
+B_compositional macro_gru train 0.982 test 0.953
+C_chain_length macro_ff train 1.0 test 0.9
+C_chain_length macro_gru train 1.0 test 0.924
+C2_size_only macro_ff train 0.971 test 0.993
+C2_size_only macro_gru train 0.967 test 0.992
+D_rule_permutation macro_ff train 0.997 test 0.564
+D_rule_permutation macro_gru train 0.998 test 0.64
+E_novel_combination macro_ff train 0.993 test 0.962
+E_novel_combination macro_gru train 0.993 test 0.957

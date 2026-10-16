@@ -1,0 +1,13 @@
+Agent,Difficulty,Mean over training seeds,SD across training seeds,Min,Max
+macro_ff,3,0.980,0.009,0.970,0.987
+macro_ff,4,0.757,0.018,0.737,0.770
+macro_ff,5,0.570,0.033,0.533,0.597
+macro_gru,3,0.979,0.008,0.970,0.987
+macro_gru,4,0.778,0.005,0.773,0.783
+macro_gru,5,0.550,0.006,0.547,0.557
+generic_ff,3,0.958,0.006,0.953,0.962
+generic_ff,4,0.661,0.020,0.647,0.676
+generic_ff,5,0.462,0.006,0.458,0.467
+generic_gru,3,0.940,0.016,0.929,0.951
+generic_gru,4,0.561,0.011,0.553,0.569
+generic_gru,5,0.352,0.036,0.327,0.378

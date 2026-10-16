@@ -1,0 +1,84 @@
+{
+  "budget_sweep": [
+    {
+      "difficulty": 4,
+      "max_steps": 100,
+      "success_rate": 0.5677777777777777,
+      "sd": 0.08140685076339264
+    },
+    {
+      "difficulty": 4,
+      "max_steps": 200,
+      "success_rate": 0.9155555555555555,
+      "sd": 0.05655047813473305
+    },
+    {
+      "difficulty": 4,
+      "max_steps": 400,
+      "success_rate": 0.951111111111111,
+      "sd": 0.05084220448941558
+    },
+    {
+      "difficulty": 4,
+      "max_steps": 800,
+      "success_rate": 0.951111111111111,
+      "sd": 0.05084220448941558
+    },
+    {
+      "difficulty": 5,
+      "max_steps": 100,
+      "success_rate": 0.23222222222222225,
+      "sd": 0.05838394082807001
+    },
+    {
+      "difficulty": 5,
+      "max_steps": 200,
+      "success_rate": 0.7422222222222222,
+      "sd": 0.0946594352642494
+    },
+    {
+      "difficulty": 5,
+      "max_steps": 400,
+      "success_rate": 0.8633333333333333,
+      "sd": 0.061494789985837815
+    },
+    {
+      "difficulty": 5,
+      "max_steps": 800,
+      "success_rate": 0.8699999999999999,
+      "sd": 0.062114712813412576
+    }
+  ],
+  "categories": {
+    "counts": {
+      "distractor interference": 189,
+      "long-horizon dependency": 45,
+      "repeated refuted hypothesis": 2
+    },
+    "n_failed": 236,
+    "n_episodes": 900,
+    "examples": [
+      {
+        "env": "env_d5_s2900004",
+        "category": "distractor interference",
+        "steps": 200,
+        "tests": 14,
+        "redundant": 0
+      },
+      {
+        "env": "env_d5_s2901001",
+        "category": "long-horizon dependency",
+        "steps": 200,
+        "tests": 59,
+        "redundant": 0
+      },
+      {
+        "env": "env_d5_s2907006",
+        "category": "repeated refuted hypothesis",
+        "steps": 200,
+        "tests": 187,
+        "redundant": 180
+      }
+    ]
+  }
+}

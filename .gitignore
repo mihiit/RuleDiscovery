@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+env/
+ENV/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.toc
+paper/*.lof
+paper/*.lot
+paper/*.synctex.gz
+paper/*.fls
+paper/*.fdb_latexmk
+
+# Temporary/generated model files
+data/models/*_curve.json.tmp
+
+# Training/checkpoint artifacts
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Logs / temporary files
+*.tmp
+*.temp
+
+# Nested external Git repository
+external/causalgame_upstream/
+
+# Python coverage
+.coverage
+htmlcov/

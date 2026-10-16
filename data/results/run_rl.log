@@ -1,0 +1,101 @@
+== run_baselines 06:15:25
+macro_ff 0.964
+macro_gru 0.967
+== run_scaling 06:16:29
+1 macro_ff 1.0
+2 macro_ff 1.0
+3 macro_ff 0.977
+4 macro_ff 0.758
+5 macro_ff 0.567
+1 macro_gru 1.0
+2 macro_gru 1.0
+3 macro_gru 0.978
+4 macro_gru 0.76
+5 macro_gru 0.579
+== run_generalization 06:21:39
+== run_generalization 02:27:44
+A_interpolation macro_ff train 0.999 test 0.991
+A_interpolation macro_gru train 0.998 test 0.99
+B_compositional macro_ff train 0.982 test 0.959
+B_compositional macro_gru train 0.982 test 0.958
+C_chain_length macro_ff train 1.0 test 0.899
+C_chain_length macro_gru train 1.0 test 0.9
+C2_size_only macro_ff train 0.971 test 0.993
+C2_size_only macro_gru train 0.967 test 0.992
+D_rule_permutation macro_ff train 0.999 test 0.644
+D_rule_permutation macro_gru train 0.998 test 0.659
+E_novel_combination macro_ff train 0.993 test 0.96
+E_novel_combination macro_gru train 0.993 test 0.957
+ALLDONE
+== run_baselines 02:44:22
+generic_ff 0.95
+generic_gru 0.943
+== run_scaling 02:45:12
+1 generic_ff 1.0
+2 generic_ff 1.0
+3 generic_ff 0.958
+4 generic_ff 0.661
+5 generic_ff 0.462
+1 generic_gru 1.0
+2 generic_gru 1.0
+3 generic_gru 0.94
+4 generic_gru 0.561
+5 generic_gru 0.352
+ALLDONE
+== run_baselines 16:08:59
+scripts/run_stages.sh: line 9: python: command not found
+== run_scaling 16:08:59
+scripts/run_stages.sh: line 9: python: command not found
+== run_generalization 16:08:59
+scripts/run_stages.sh: line 9: python: command not found
+ALLDONE
+== run_baselines 21:41:48
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_baselines.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_scaling 21:41:48
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_scaling.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_generalization 21:41:49
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_generalization.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+ALLDONE
+== run_baselines 21:43:09
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_baselines.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_scaling 21:43:09
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_scaling.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+== run_generalization 21:43:09
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\run_generalization.py", line 2, in <module>
+    from common import *
+  File "C:\Users\mihit nanda\Downloads\RuleDiscovery\RuleDiscovery\experiments\common.py", line 1, in <module>
+    import os, sys, json, time, csv, resource
+ModuleNotFoundError: No module named 'resource'
+ALLDONE

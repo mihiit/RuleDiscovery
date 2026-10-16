@@ -1,0 +1,28 @@
+== run_baselines
+macro_ff 0.966
+macro_gru 0.967
+== run_scaling
+1 macro_ff 1.0
+2 macro_ff 1.0
+3 macro_ff 0.98
+4 macro_ff 0.751
+5 macro_ff 0.553
+1 macro_gru 1.0
+2 macro_gru 1.0
+3 macro_gru 0.98
+4 macro_gru 0.767
+5 macro_gru 0.546
+== run_generalization
+A_interpolation macro_ff train 0.999 test 0.991
+A_interpolation macro_gru train 0.998 test 0.99
+B_compositional macro_ff train 0.982 test 0.959
+B_compositional macro_gru train 0.982 test 0.958
+C_chain_length macro_ff train 1.0 test 0.899
+C_chain_length macro_gru train 1.0 test 0.9
+C2_size_only macro_ff train 0.971 test 0.993
+C2_size_only macro_gru train 0.967 test 0.992
+D_rule_permutation macro_ff train 0.999 test 0.568
+D_rule_permutation macro_gru train 0.999 test 0.646
+E_novel_combination macro_ff train 0.993 test 0.96
+E_novel_combination macro_gru train 0.993 test 0.957
+ALLDONE
